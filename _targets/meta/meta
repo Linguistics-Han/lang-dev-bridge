@@ -1,7 +1,13 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 file_data|stem|ebb2066306626417|79eff006878a0617|2c530c1562a7fbd1|-816827882||t20221.0559988827s|s69b|69|rds|local|vector|||0.579||
 data|stem|73dabcfa798316ac|7109e4999acaff42|31d5103c7e0f2670|33550471||t20221.0563077671s|s41586b|41586|rds|local|vector|||0.296||
+data_clean|stem|587651c0a6778aec|cc240c1fbd3216c9|105b40f9628df3fd|-1454182835||t20221.0997299534s|s40514b|40514|rds|local|vector|||0.047||
+avg_perf|stem|637b032761c41b93|3eec76b880ab8c18|eb7c422bb50a8225|1945533864||t20233.255807305s|s10119b|10119|rds|local|vector|||0.032||
+simil2dist_rel|function|f32304097e5223dc
+simil2dist_abs|function|38a9941422c289bc
+graphs_abs|stem|f69c80f304e1e6fe|0dd1f7fae284653b|9926ac4b9a1678c3|-690686510||t20240.6288683812s|s5093b|5093|rds|local|vector|||0.032||
+graphs_rel|stem|8eeb6925c3bb24c7|fd0f45410c78c7cf|9926ac4b9a1678c3|-456543111||t20240.6288694412s|s5118b|5118|rds|local|vector|||0.031||
 clean_data|function|57dfcd139d5d5360
 load_all_sheets|function|5f534043131f91a3
-.Random.seed|object|532210b334df94ed
-data_clean|stem|587651c0a6778aec|cc240c1fbd3216c9|105b40f9628df3fd|-1454182835||t20221.0997299534s|s40514b|40514|rds|local|vector|||0.047||
+.Random.seed|object|661b616e7ee94f6b
+create_graphs|function|58c0c958dd3de01f
