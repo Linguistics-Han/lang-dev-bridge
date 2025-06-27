@@ -21,12 +21,5 @@ list(
         across(all_of(vars_config$variable), mean),
         .by = c(time, SID)
       )
-  ),
-  tarchetypes::tar_map(
-    tibble::tibble(name = c("rel", "abs")),
-    tar_target(
-      graphs,
-      create_graphs(avg_perf, trans = name)
-    )
   )
 )
