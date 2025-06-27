@@ -2,3 +2,39 @@
 title: "桥梁分析结果"
 author: 张亮，韩笑
 ---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+library(tidyverse)
+targets::tar_load(c(avg_perf, vars_config))
+group_list <- vars_config |> 
+  mutate(val = row_number()) |> 
+  select(group, val) |> 
+  chop(val) |> 
+  deframe()
+```
+# 数据分析说明
+
+我们将每个人在每个测试中多个试次得分的**平均**作为每个人测试的实际得分。
+
+# 可预测性
+
+下面对每一次测量计算网络的可预测性指标，并可视化。
+
+```{r}
+#| echo: false
+#| output: asis
+
+for (cur_time in unique(avg_perf$time)) {
+  cat("\n\n")
+  knitr::knit_expand("archetypes/_vis_pred.qmd") |> 
+    knitr::knit_child(text = _, quiet = TRUE) |> 
+    cat()
+  cat("\n\n")
+}
+```
+
+根据以上结果其实我们发现部分时间点中变量`关系小句（套合）数`的可预测性太低了，可能有一些问题，可能考虑删除这个变量。不过我们在不去掉改变量前先做一下桥梁分析。

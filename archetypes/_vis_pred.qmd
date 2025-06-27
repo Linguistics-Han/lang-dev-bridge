@@ -1,0 +1,43 @@
+## 第{{cur_time}}次测量
+
+```{r}
+#| label: vis-pred-{{cur_time}}
+#| warning: false
+#| message: false
+
+cur_dat <- avg_perf |>
+  filter(time == {{cur_time}}) |>
+  select(-c(time, SID)) |>
+  as.matrix()
+mgm_obj <- mgm::mgm(
+  cur_dat,
+  type = rep("g", ncol(cur_dat)),
+  level = rep(1, ncol(cur_dat)),
+  ruleReg = "OR",
+  pbar = FALSE
+)
+pred_obj <- predict(mgm_obj, data = cur_dat, errorCon = "R2")
+gt::gt(pred_obj$errors)
+network <- bootnet::estimateNetwork(
+  data = cur_dat,
+  default = "EBICglasso",
+  tuning = 0.5,
+  corMethod = "cor",
+  corArgs = list( 
+    method="spearman",
+    use="pairwise.complete.obs"
+  )
+)
+plot(
+  network, # weighted adjacency matrix as input
+  layout = 'spring',
+  pie = pred_obj$error[, 2], # provide errors as input
+  pieColor = rep('#377EB8', ncol(cur_dat)),
+  edge.color = mgm_obj$pairwise$edgecolor,
+  nodeNames = colnames(cur_dat),
+  legend.mode = "style2",
+  labels = seq_len(ncol(cur_dat)),
+  groups = group_list
+)
+```
+

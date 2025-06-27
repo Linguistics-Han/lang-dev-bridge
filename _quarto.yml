@@ -16,6 +16,8 @@ format:
       - brand
     css: styles.css
     toc: true
+    code-fold: true
+    lang: zh-cn
 
-
-
+execute:
+  freeze: true
